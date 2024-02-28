@@ -9,3 +9,4 @@ Git utilisation, main command :
 - git push
 - git pull
 - git merge
+In Visual Studio Code, go to "Source Control"
