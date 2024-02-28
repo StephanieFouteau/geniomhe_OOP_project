@@ -1,0 +1,23 @@
+$ git status -b
+
+Votre branche et 'origin/main' ont divergé,
+et ont 1 et 1 commits différents chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+
+$ git pull --rebase origin/main 
+fatal : 'origin/main' does not appear to be a git repository
+fatal : Impossible de lire le dépôt distant.
+
+Veuillez vérifier que vous avez les droits d'accès
+et que le dépôt existe.
+
+
+$ git pull --rebase
+Rebasage et mise à jour de refs/heads/main avec succès.
+
+
+Naïa
+21:35
+DataError: Supplied data does not contain specified dimensions, the following dimensions were not found: ['total_counts', 'n_genes_by_counts']
+df.hvplot.scatter(x='total_counts', y='n_genes_by_counts', 
+                  legend='top', height=400, width=400)
