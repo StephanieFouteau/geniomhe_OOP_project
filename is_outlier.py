@@ -2,6 +2,9 @@
 https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html
 """
 import numpy as np
+import scanpy as sc
+import seaborn as sns
+from scipy.stats import median_abs_deviation
 
 # def is-outlier sc best practices
 # function that takes a metric, i.e. a column in .obs and the number of MADs (nmad) that is still permissive within the filtering strategy
