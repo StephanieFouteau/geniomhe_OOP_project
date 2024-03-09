@@ -3,7 +3,7 @@ import plotly as py
 import plotly.express as px
 
 
-    """Dynamically plot dispersions or normalized variance versus means for genes. 
+    """Dynamically plot dispersions versus means for genes. 
 
     adata
         Result of :func:`~scanpy.pp.highly_variable_genes`.
