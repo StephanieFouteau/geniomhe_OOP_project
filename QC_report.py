@@ -98,4 +98,4 @@ def create_qc_report(adata):
     report.write(html_string)
     report.close()
 
-return report
+    return report
