@@ -9,6 +9,8 @@ import plotly.express as px
 import plotly.io as pio
 import seaborn as sns
 from matplotlib import pyplot as plt
+import is_outlier
+
 
 def create_qc_report(adata):
 
@@ -61,7 +63,8 @@ def create_qc_report(adata):
     fig.savefig('./figures/Normalized counts.png')
 
     sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
-    fig = px.scatter(adata.var, x="means", y="dispersions", color="highly_variable", hover_data=['gene_ids'])
+    sc.pl.dynamic_highly_variable_genes(adata)
+    #fig = px.scatter(adata.var, x="means", y="dispersions", color="highly_variable", hover_data=['gene_ids'])
     pio.write_html(fig, file="dispersion versus mean.html", auto_open=False)
 
     html_string = '''
