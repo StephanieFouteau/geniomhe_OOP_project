@@ -10,6 +10,7 @@ import plotly.io as pio
 import seaborn as sns
 from matplotlib import pyplot as plt
 import is_outlier as is_outlier
+import dynamic_highly_variable_genes as dhvg
 
 
 def create_qc_report(adata):
@@ -85,7 +86,7 @@ def create_qc_report(adata):
     sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
     
     # Plot dispersions or normalized variance versus means for genes.
-    sc.pl.dynamic_highly_variable_genes(adata)
+    dhvg.dynamic_plot_highly_variable_genes(adata)
     #fig = px.scatter(adata.var, x="means", y="dispersions", color="highly_variable", hover_data=['gene_ids'])
     pio.write_html(fig, file="dispersion versus mean.html", auto_open=False) # save plot as html
 
