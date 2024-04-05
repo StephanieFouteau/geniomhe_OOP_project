@@ -9,7 +9,7 @@ import plotly.express as px
 import plotly.io as pio
 import seaborn as sns
 from matplotlib import pyplot as plt
-import is_outlier
+import is_outlier as is_outlier
 
 
 def create_qc_report(adata):
