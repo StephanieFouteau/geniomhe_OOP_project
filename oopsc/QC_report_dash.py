@@ -29,6 +29,9 @@ adata = prepare_adata()
 # The figures
 fig1 = sc.pl.highest_expr_genes(adata, n_top=25, save=True)
 
+fig2 = sc.external.pl.scrublet_score_distribution(adata, save=True)
+
+
 
 # The app
 app = Dash(__name__)
@@ -44,6 +47,14 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='example-graph-2',
         figure=fig1
+    ),
+
+    html.Div(children='Plot histogram of doublet scores for observed transcriptomes and simulated doublets.'
+    ),
+
+    dcc.Graph(
+        id='hist-doublet',
+        figure=fig2
     )
 ])
 
