@@ -11,6 +11,7 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 import is_outlier as is_outlier
 import dynamic_highly_variable_genes as dhvg
+import dynamic_scatter as ds
 
 
 def create_qc_report(adata):
@@ -42,6 +43,13 @@ def create_qc_report(adata):
     adata, qc_vars=["mt", "ribo"], inplace=True, percent_top=[25], log1p=True
     )
 
+    # Plot QC metrics jointly
+    dps_genes = ds.dynamic_plot_scatter_genes(adata)
+    pio.write_html(dps_genes, file="QC metrics v1.html", auto_open=False) # save plot as html
+    dps_mt = ds.dynamic_plot_scatter_mt(adata)
+    pio.write_html(dps_mt, file="QC metrics v2.html", auto_open=False)
+    dps_total = ds.dynamic_plot_scatter_total(adata)
+    pio.write_html(dps_total, file="QC metrics v3.html", auto_open=False)
 
     # Filtering outlier using the is_outlier function
     # Filtering log1p_total_counts, log1p_n_genes_by_counts and pct_counts_in_top_25_genes with a threshold of 5 MADs.
@@ -103,21 +111,30 @@ def create_qc_report(adata):
          <h1>Quality Control</h1>
 ​
             <!-- *** Section 1 *** --->
-            <h2>Section 1: Highest expressed genes</h2>
-         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+        <h2>Section 1: QC metrics</h2>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+    src="QC metric v1.html"></iframe>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+    src="QC metric v2.html"></iframe>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+    src="QC metric v3.html"></iframe>
+
+            <!-- *** Section 2 *** --->
+        <h2>Section 2: Highest expressed genes</h2>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
     img src="./figures/highest_expr_genes.pdf"></iframe>
 
 
 ​
-         <!-- *** Section 2 *** --->
-         <h2>Section 2: Normalization</h2>
-         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+            <!-- *** Section 3 *** --->
+        <h2>Section 3: Normalization</h2>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
     img src="./figures/Normalized counts.png"></iframe>
 
 ​
-    <!-- *** Section 3 *** --->
-         <h2>Section 3: Feature selection</h2>
-         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+            <!-- *** Section 4 *** --->
+        <h2>Section 4: Feature selection</h2>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
     src="dispersion versus mean.html"></iframe>
 
      </body>
