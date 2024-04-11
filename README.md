@@ -7,6 +7,28 @@ The goal of this modification of scanpy is to allow some *dynamic plots* in orde
 
 ## Instructions/use
 
+### Installation
+
+To use our library, you have to import our git. Our functions are in the folder `oopsc`.
+
+First, you have to install dependencies, like this :
+
+```bash
+git clone git@github:StephanieFouteau/geniomhe_OOP_project.git oopsc
+cd oopsc
+pip install -e .
+```
+
+### Use
+
+Then, you can use our work like anyother library.
+
+```python
+import oopsc
+``` 
+
+### Dynamics plots
+
 
 
 
@@ -21,5 +43,8 @@ A little help for our collaborative work
 
 In Visual Studio Code, go to "Source Control"
 
-*authors : Naïa Périnelle, Stéphanie FOUTEAU*
+## authors
+
+- Naïa Périnelle
+- Stéphanie FOUTEAU
 
