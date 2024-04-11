@@ -29,6 +29,20 @@ import oopsc
 
 ### Dynamics plots
 
+The dynamic plot functions, `dynamic_highly_variable_genes` and `dynamic_scatter`, do not make all plots of this type dynamic, but give plots for specific preprocessing steps:
+
+- one for *quality control* to show low-quality cells to remove.
+- the other for the *feature selection* : replace the scanpy plot `highly_variable_genes`
+
+In the file `dynamic_scatter`, there are three functions, with the same usage :
+
+- `dynamic_plot_scatter_genes`
+- `dynamic_plot_scatter_mt`
+- `dynamic_plot_scatter_total`
+
+*To make all the scatter type plots dynamic, we have to directly modify the scatter function of scanpy, and more precisely the `_scatter_obs` function.*
+
+### QC report
 
 
 
