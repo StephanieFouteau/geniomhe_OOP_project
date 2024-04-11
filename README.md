@@ -44,7 +44,14 @@ In the file `dynamic_scatter`, there are three functions, with the same usage :
 
 ### QC report
 
+Our most important project is the addition of functions to generate a QC-report. We have a version directly in html, and another using dash.
 
+The output is an HTML page, with all the plots showing the results of the important preprocessing steps.
+
+In files:
+
+- `QC_report.py`
+- `QC_report_dash.py`
 
 ### Git utilisation, main command :
 A little help for our collaborative work
