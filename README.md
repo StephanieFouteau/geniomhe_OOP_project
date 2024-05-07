@@ -14,9 +14,8 @@ To use our library, you have to import our git. Our functions are in the folder 
 First, you have to install dependencies, like this :
 
 ```bash
-git clone git@github:StephanieFouteau/geniomhe_OOP_project.git oopsc
-cd oopsc
-pip install -e .
+git clone https://github.com/StephanieFouteau/geniomhe_OOP_project/
+cd geniomhe_OOP_project/oopsc
 ```
 
 ### Use
