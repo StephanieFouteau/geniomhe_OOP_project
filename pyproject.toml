@@ -1,0 +1,36 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs"]
+
+[project]
+name = "oopsc"
+dynamic = ["version"]
+authors = [
+    {name = "Naia Perinelle"},
+    {name = "Stephanie Fouteau"}
+]
+
+description = "Python Bioinformatics code for single-cell omics data analysis"
+readme = "README.md"
+license = "BSD-3-clause"
+keywords = ["single cell", "pre-processing"]
+
+dependencies = [
+    "scanpy",
+    "plotly",
+    "seaborn",
+    "matplotlib",
+    "numpy",
+    "scipy",
+    "dash",
+]
+
+[project.urls]
+Repository = "https://github.com/StephanieFouteau/geniomhe_OOP_project"
+Documentation = "https://github.com/StephanieFouteau/geniomhe_OOP_project/tree/main/docs"
+
+
+[tool.hatch.version]
+source = "vcs"
+[tool.hatch.build.hooks.vcs]
+version-file = "oopsc/_version.py"
