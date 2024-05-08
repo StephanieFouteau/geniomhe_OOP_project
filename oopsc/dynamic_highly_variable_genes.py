@@ -13,5 +13,5 @@ adata
 def dynamic_plot_highly_variable_genes(adata):
     
     fig = px.scatter(adata.var, x="means", y="dispersions", color="highly_variable", hover_data=['gene_ids'])
-    fig.show()
+    # fig.show()
     return fig
