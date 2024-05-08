@@ -32,7 +32,8 @@ import oopsc
 
 Scanpy is based on an AnnData object. adata stores a data matrix adata.X, annotation of observations adata.obs and variables adata.var as pd.DataFrame https://scanpy.readthedocs.io/en/stable/usage-principles.html. Let’s start by building a basic AnnData object:
 
-```adata = sc.read_10x_mtx(
+```python
+adata = sc.read_10x_mtx(
     'data/filtered_gene_bc_matrices/hg19/',  # the directory with the `.mtx` file
     var_names='gene_symbols',                # use gene symbols for the variable names (variables-axis index)
     cache=True)                              # write a cache file for faster subsequent reading
