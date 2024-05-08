@@ -21,7 +21,7 @@ sc.pl.highly_variable_genes(adata)
 
 
 ```python
-hvg.dynamic_highly_variable_genes(adata) 
+hvg.dynamic_plot_highly_variable_genes(adata) 
 ```
 
 This dynamic scatter plot displays either dispersion and mean value and the gene_Id for each gene. 
