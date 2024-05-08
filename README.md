@@ -1,5 +1,6 @@
 # scanpy_geniomhe
-Python Bioinformatics code for single-cell omics data analysis
+Python Bioinformatics code for single-cell omics data analysis using scanpy library
+https://scanpy.readthedocs.io/en/stable/
 
 ## Goal
 
@@ -15,7 +16,8 @@ First, you have to install dependencies, like this :
 
 ```bash
 git clone https://github.com/StephanieFouteau/geniomhe_OOP_project/
-cd geniomhe_OOP_project/oopsc
+cd geniomhe_OOP_project/
+pip install -e .
 ```
 
 ### Use
@@ -24,15 +26,30 @@ Then, you can use our work like anyother library.
 
 ```python
 import oopsc
-``` 
+```
+ 
+### Data
+
+Scanpy is based on an AnnData object. adata stores a data matrix adata.X, annotation of observations adata.obs and variables adata.var as pd.DataFrame https://scanpy.readthedocs.io/en/stable/usage-principles.html. Let’s start by building a basic AnnData object:
+
+```adata = sc.read_10x_mtx(
+    'data/filtered_gene_bc_matrices/hg19/',  # the directory with the `.mtx` file
+    var_names='gene_symbols',                # use gene symbols for the variable names (variables-axis index)
+    cache=True)                              # write a cache file for faster subsequent reading
+```
 
 ### Dynamics plots
 
-The dynamic plot functions, `dynamic_highly_variable_genes` and `dynamic_scatter`, do not make all plots of this type dynamic, but give plots for specific preprocessing steps:
+The dynamic plot functions, `dynamic_highly_variable_genes` and `dynamic_scatter`, give plots for specific preprocessing steps:
 
-- one for *quality control* to show low-quality cells to remove.
-- the other for the *feature selection* : replace the scanpy plot `highly_variable_genes`
+*feature selection* : replace the scanpy plotting function `highly_variable_genes`
+Plot dynamically dispersions versus means for genes
 
+- `dynamic_highly_variable_genes` 
+
+
+
+*quality control* to show low-quality cells to remove.
 In the file `dynamic_scatter`, there are three functions, with the same usage :
 
 - `dynamic_plot_scatter_genes`

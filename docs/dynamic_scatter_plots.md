@@ -18,21 +18,45 @@ It is therefore preferred to consider multiple covariates when thresholding deci
 
 In QC, the first step is to calculate the QC covariates or metric. We compute these using the scanpy function sc.pp.calculate_qc_metrics, which can also calculate the proportions of counts for specific gene populations :
 
+
 ```python
 # mitochondrial genes
-adata.var["mt"] = adata.var_names.str.startswith("MT-")
+adata.var["mt"] = adata.var_names.str.startswith("MT-") # annotate the group of mitochondrial genes as 'mt'
 # ribosomal genes
-adata.var["ribo"] = adata.var_names.str.startswith(("RPS", "RPL"))
-# hemoglobin genes.
-adata.var["hb"] = adata.var_names.str.contains(("^HB[^(P)]"))
+adata.var["ribo"] = adata.var_names.str.startswith(("RPS", "RPL")) # annotate the group of ribosomal genes as 'ribo'
 
-sc.pp.calculate_qc_metrics(adata, qc_vars=["mt", "ribo", "hb"], inplace=True, percent_top=[20], log1p=True)
+sc.pp.calculate_qc_metrics(adata, qc_vars=["mt", "ribo"], inplace=True, percent_top=[25], log1p=True) # place calculated metrics in adata’s .obs and .var and computing log1p transformed annotations
 ```
 ### dynamic_scatter
 
-The goal of the three functions
-- `dynamic_plot_scatter_genes`
-- `dynamic_plot_scatter_mt`
-- `dynamic_plot_scatter_total`
+```python
+import oopsc.dynamic_scatter as dsc
+```
+# plotting dynamically the three covariates:
 
-is to allow all the different low-quality reads to be visualized at the same time, dynamically. Indeed, a single scatter function does not make it easy to see the points affected by the three parameters.
+- the number of genes expressed in the count matrix
+- the total counts per cell
+- the percentage of counts in mitochondrial genes
+
+*Three different configurations:*
+
+- `dynamic_plot_scatter_genes`
+- `dynamic_plot_scatter_total`
+- `dynamic_plot_scatter_mt`
+
+*replace scanpy pltotting function:*
+
+```python
+sc.pl.scatter(adata, "total_counts", "n_genes_by_counts", color="pct_counts_mt")
+```
+
+
+```python
+dsc.dynamic_plot_scatter_mt(adata)
+dsc.dynamic_plot_scatter_genes(adata)
+dsc.dynamic_plot_scatter_total(adata)
+```
+
+
+
+
